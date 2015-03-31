@@ -1,0 +1,51 @@
+.row
+  .col-md-12.col-lg-12
+    %ol.breadcrumb
+      %li
+        %a{ href: '/admin' } Inicio
+      %li.active
+        Usuarios
+%h3 
+  Usuarios
+.row
+  .col-md-12.col-lg-12
+    %a.btn.btn-primary.pull-right{ href:"/admin/users/new" }
+      Nuevo Usuario
+.row
+  .col-md-12.col-lg-12
+    .table-responsive
+      %table.table.table-condensed
+        %thead
+          %tr
+            %th Creación
+            %th Nombre
+            %th Usuario
+            %th Admin
+            %th
+              .pull-right
+                Acciones
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                = user.created_at.strftime("%d/%m/%Y")
+              %td 
+                = user.name
+              %td 
+                = user.username
+              %td 
+                - if user.admin
+                  %i.glyphicon.glyphicon-ok.green
+              %td
+                .pull-right
+                  %a.btn.btn-info.btn-sm{:href=>"/admin/users/#{user.id}"}
+                    Ver
+                  %a.btn.btn-success.btn-sm{:href=>"/admin/users/#{user.id}/edit"}
+                    Editar
+                  - if current_user.admin
+                    %form.btn-delete{method:"post", action:"/admin/users/#{user.id}", onsubmit:"return confirm('Está seguro que quiere eliminar?');"}
+                      %input{ type:"hidden", name:"_method", value:"delete" }
+                      %button.btn.btn-danger.btn-sm{ type:'submit'  } Eliminar
+    %a.btn.btn-primary.pull-right{ href:"/admin/users/new" }
+      Nuevo Usuario
+= display_paginate(@users, "users")

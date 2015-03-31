@@ -1,0 +1,53 @@
+.row
+  .col-md-12.col-lg-12
+    %ol.breadcrumb
+      %li
+        %a{ href: '/admin' } Inicio
+      %li.active
+        Slaves
+%h3
+  Slaves
+.row
+  .col-md-12.col-lg-12
+    %a.btn.btn-primary.pull-right{ href:"/admin/slaves/new" }
+      Nuevo Slave
+.row
+  .col-md-12.col-lg-12
+    .table-responsive
+      %table.table.table-condensed
+        %thead
+          %tr
+            %th Creación
+            %th Adapter
+            %th Host
+            %th Database
+            %th Username
+            %th
+              .pull-right
+                Acciones
+        %tbody
+          - @slaves.each do |slave|
+            %tr
+              %td
+                = slave.created_at.strftime("%d/%m/%Y")
+              %td
+                = slave.adapter
+              %td
+                = slave.host
+              %td
+                = slave.database
+              %td
+                = slave.username
+              %td
+                .pull-right
+                  %a.btn.btn-info.btn-sm{:href=>"/admin/slaves/#{slave.id}"}
+                    Ver
+                  %a.btn.btn-success.btn-sm{:href=>"/admin/slaves/#{slave.id}/edit"}
+                    Editar
+                  - if current_user.admin
+                    %form.btn-delete{method:"post", action:"/admin/slaves/#{slave.id}", onsubmit:"return confirm('Está seguro que quiere eliminar?');"}
+                      %input{ type:"hidden", name:"_method", value:"delete" }
+                      %button.btn.btn-danger.btn-sm{ type:'submit'  } Eliminar
+    %a.btn.btn-primary.pull-right{ href:"/admin/slaves/new" }
+      Nuevo Slave
+= display_paginate(@slaves, "slaves")

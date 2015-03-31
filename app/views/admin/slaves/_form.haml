@@ -1,0 +1,21 @@
+.form-group
+  %label.col-sm-2.control-label{ for:'adapter' } Adapter*
+  .col-sm-10
+    %input.form-control#adapter{ type:'text', name:'slave[adapter]', value:"#{@slave.adapter}", autofocus:"", required: true }
+.form-group
+  %label.col-sm-2.control-label{ for:'host' } Host*
+  .col-sm-10
+    %input.form-control#host{ type:'text', name:'slave[host]', value:"#{@slave.host}", required: true }
+.form-group
+  %label.col-sm-2.control-label{ for:'database' } Database*
+  .col-sm-10
+    %input.form-control#database{ type:'text', name:'slave[database]', value:"#{@slave.database}", required: true }
+.form-group
+  %label.col-sm-2.control-label{ for:'username' } Username*
+  .col-sm-10
+    %input.form-control#username{ type:'text', name:'slave[username]', value:"#{@slave.username}", required: true }
+.form-group
+  %label.col-sm-2.control-label{ for:'password' } Password*
+  .col-sm-10
+    %input.form-control#password{ type:'text', name:'slave[password]', value:"#{@slave.password}", required: true }
+

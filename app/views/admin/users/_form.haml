@@ -1,0 +1,24 @@
+- if @user.admin
+  .form-group
+    %label.col-sm-2.control-label{ for:'admin' } Admin
+    .col-sm-10
+      %input{type:'hidden', name:'user[admin]', value:'false' }
+      %input{type:'checkbox', name:'user[admin]', value:'true', checked: @user.admin }
+.form-group
+  %label.col-sm-2.control-label{ for:'name' } Nombre*
+  .col-sm-10
+    %input.form-control#name{ type:'text', name:'user[name]', value:"#{@user.name}", autofocus:"", required: true }
+.form-group
+  %label.col-sm-2.control-label{ for:'username' } Usuario*
+  .col-sm-10
+    - if @user.new?
+      %input.form-control{ type:'text', name:'user[username]', value:"#{@user.username}", required: true }
+    - else
+      %fieldset{ :disabled=> true }
+        %input.form-control#disabledTextInput{ type:'text', value:"#{@user.username}" }
+.form-group
+  %label.col-sm-2.control-label{ for:'password' } Contraseña
+  .col-sm-10
+    %input.form-control{ type:'password', name:'user[password]' }
+    - if !@user.new?
+      %span.help-block Sólo si desea editar la contraseña

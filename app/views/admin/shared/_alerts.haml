@@ -1,0 +1,19 @@
+.row
+  .col-md-12.col-lg-12
+    - if flash[:error]
+      .alert.alert-danger.alert-dismissable
+        %button.close{type: "button", data:{dismiss: "alert"}, aria:{hidden: "true"}}
+          &times;
+        = flash[:error]
+
+    - if flash[:notice]
+      .alert.alert-success.alert-dismissable
+        %button.close{type: "button", data:{dismiss: "alert"}, aria:{hidden: "true"}}
+          &times;
+        = flash[:notice]
+
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function(){
+      autoClosingAlert(".alert", 10000);
+    });  

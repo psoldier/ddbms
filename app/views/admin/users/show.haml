@@ -1,0 +1,45 @@
+.row
+  .col-md-12.col-lg-12
+    %ol.breadcrumb
+      %li
+        %a{ href: '/admin' } Inicio
+      %li
+        %a{ href:'/admin/users' } Usuarios
+      %li.active Ver
+
+.row
+  .col-md-12.col-lg-12
+    %h4
+      Usuario
+    %hr
+    .col-md-6.col-lg-6.col-md-offset-1.col-lg-offset-1
+      .form-horizontal
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Admin:
+          .col-md-9.col-lg-9
+            %label.control-label
+              - if @user.admin
+                %i.glyphicon.glyphicon-ok.green
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Nombre:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @user.name
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Usuario:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @user.username
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Creación:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @user.created_at.strftime("%d/%m/%Y")
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Actualización:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @user.updated_at.nil? ? "-" : @user.updated_at.strftime("%d/%m/%Y") 
+        .pull-right
+          %a.btn.btn-primary{ href:"/admin/users" } Volver
+          %a.btn.btn-success{ href:"/admin/users/#{@user.id}/edit" } Editar

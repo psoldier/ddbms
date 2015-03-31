@@ -1,0 +1,21 @@
+.row
+  .col-md-12.col-lg-12
+    %ol.breadcrumb
+      %li
+        %a{ href:'/' } Inicio
+      %li
+        %a{ href:'/admin/users' } Usuarios
+      %li.active Editar
+
+.row
+  .col-md-12.col-lg-12
+    %h4
+      Editar Usuarios
+    %hr
+    .col-md-6.col-lg-6.col-md-offset-1.col-lg-offset-1
+      %form.form-horizontal{ method:"post", action:"/admin/users/#{@user.id}" }
+        %input{ type:"hidden", name:"_method", value:"put" }
+        = partial :'users/form'
+        .pull-right
+          %a.btn.btn-primary{ href:'/admin/users' } Volver
+          %button.btn.btn-success{ type:'submit' } Guardar

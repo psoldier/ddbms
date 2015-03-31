@@ -1,0 +1,22 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{type:'button', data:{toggle:'collapse', target:'navbar-collapse'}}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{ href:'#' } DBMS
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user.nil?
+          %li
+            %a{href: "/admin/sessions/login"}
+              Ingresar
+              %i.glyphicon.glyphicon-circle-arrow-right
+        - else
+          %li
+            %a Bienvenido <b>#{current_user.name}</b>
+          %li
+            %a{href: "/admin/sessions/logout"}
+              Salir
+              %i.glyphicon.glyphicon-circle-arrow-right

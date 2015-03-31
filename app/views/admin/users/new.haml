@@ -1,0 +1,20 @@
+.row
+  .col-md-12.col-lg-12
+    %ol.breadcrumb
+      %li
+        %a{ href: '/admin' } Inicio
+      %li
+        %a{ href:'/admin/users' } Usuarios
+      %li.active Nuevo
+
+.row
+  .col-md-12.col-lg-12
+    %h4
+      Nuevo Usuario
+    %hr
+    .col-md-6.col-lg-6.col-md-offset-1.col-lg-offset-1
+      %form.form-horizontal{ method:'post', action:'/admin/users/create' }
+        = partial :'users/form'
+        .pull-right
+          %a.btn.btn-primary{ href:'/admin/users' } Volver
+          %button.btn.btn-success{ type:'submit' } Crear

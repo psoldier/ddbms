@@ -1,0 +1,21 @@
+.row
+  .col-md-12.col-lg-12
+    %ol.breadcrumb
+      %li
+        %a{ href:'/' } Inicio
+      %li
+        %a{ href:'/admin/slaves' } Slaves
+      %li.active Editar
+
+.row
+  .col-md-12.col-lg-12
+    %h4
+      Editar Slaves
+    %hr
+    .col-md-6.col-lg-6.col-md-offset-1.col-lg-offset-1
+      %form.form-horizontal{ method:"post", action:"/admin/slaves/#{@user.id}" }
+        %input{ type:"hidden", name:"_method", value:"put" }
+        = partial :'slaves/form'
+        .pull-right
+          %a.btn.btn-primary{ href:'/admin/slaves' } Volver
+          %button.btn.btn-success{ type:'submit' } Guardar

@@ -1,0 +1,43 @@
+!!! 5
+%html
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(name="description" content="")
+    %meta(name="author" content="")
+    %link{ rel: "shortcut icon", href: "/imgs/favicon.ico"}
+
+    %title DBMS
+
+    / Bootstrap core CSS
+    %link{:href => "/css/bootstrap.min.css", :rel => "stylesheet"}
+
+    / Custom styles for this template
+    %link{:href => "/css/starter-template.css", :rel => "stylesheet"}
+    %link{:href => "/css/datepicker.css", :media => "screen", :rel => "stylesheet"}
+
+    = yield_content :stylesheets
+
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      %script{src: "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"}
+      %script{src: "https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"}
+
+  %body
+    = partial :'shared/navbar'
+
+    .container
+      = partial :'shared/alerts'
+      = yield
+
+    .footer
+      .container
+        %p.text-muted
+    / Bootstrap core JavaScript
+    /==================================================
+    / Placed at the end of the document so the pages load faster
+    %script{src: "/js/jquery-1.11.1.min.js" }
+    %script{src: "/js/bootstrap.min.js"}
+    %script{:src => "/js/app.js"}
+    %script{:src => "/js/bootstrap-datepicker.js"}
+    = yield_content :javascripts

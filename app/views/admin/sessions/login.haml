@@ -1,0 +1,10 @@
+.row
+  .col-md-12.col-lg-12
+    /%img.center-block{src: "/imgs/logo.png"}
+    %form.form-signin{action: '/admin/sessions/login', method:'post' }
+      %h3.text-center.form-signin-heading Admin Login
+      %input.form-control{type:'text', name:'username', placeholder:'Usuario', autofocus:""}
+      %input.form-control{type:'password', name:'password', placeholder:'Contraseña'}
+      %label.checkbox
+        %input{type:'checkbox', value:'remember-me'} Recordarme
+      %button.btn.btn-lg.btn-primary.btn-block{ type: 'submit'} Ingresar

@@ -1,0 +1,49 @@
+.row
+  .col-md-12.col-lg-12
+    %ol.breadcrumb
+      %li
+        %a{ href: '/admin' } Inicio
+      %li
+        %a{ href:'/admin/slaves' } Slaves
+      %li.active Ver
+
+.row
+  .col-md-12.col-lg-12
+    %h4
+      Slave
+    %hr
+    .col-md-6.col-lg-6.col-md-offset-1.col-lg-offset-1
+      .form-horizontal
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Adapter:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.adapter
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Database:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.database
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Host:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.host
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Username:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.username
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Creación:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.created_at.strftime("%d/%m/%Y")
+        .form-group
+          %label.col-md-3.col-lg-3.control-label Actualización:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.updated_at.nil? ? "-" : @slave.updated_at.strftime("%d/%m/%Y")
+        .pull-right
+          %a.btn.btn-primary{ href:"/admin/slaves" } Volver
+          %a.btn.btn-success{ href:"/admin/slaves/#{@slave.id}/edit" } Editar
