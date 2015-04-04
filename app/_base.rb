@@ -39,11 +39,6 @@ module DBMS
     DB = Sequel.connect("mysql2://#{hash['username']}:#{hash['password']}@#{hash['host']}/#{hash['database']}")
     DB.extension(:pagination)
 
-    # i18n
-    I18n.load_path = Dir[File.join('config', 'locales', '*.{rb,yml}').to_s]
-    I18n.enforce_available_locales = false
-    I18n.default_locale = 'es'
-
     configure :development do
       register Sinatra::Reloader
       also_reload 'app/models/*.rb'
