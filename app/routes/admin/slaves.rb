@@ -50,8 +50,8 @@ module DBMS
 
     delete '/slaves/:id' do
       begin
-        Slave = Slave[params[:id]]
-        Slave.delete
+        slave = Slave[params[:id]]
+        slave.destroy
         flash[:notice] = 'Slave eliminado con exito'
       rescue Exception => e
         flash[:error] = e.to_s

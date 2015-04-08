@@ -40,7 +40,7 @@ module DBMS
         params[:user].tap{ |s| s.delete('password') } unless ! params[:user][:password].blank?
         @user = User[params[:id]]
         @user.update params[:user]
-        @user.save
+        #@user.save
         flash[:notice] = 'Usuario actualizado con exito'
         redirect :"/admin/users/#{params[:id]}"
       rescue Exception => e
@@ -52,7 +52,7 @@ module DBMS
     delete '/users/:id' do
       begin
         user = User[params[:id]]
-        user.delete
+        user.destroy
         flash[:notice] = 'Usuario eliminado con exito'
       rescue Exception => e
         flash[:error] = e.to_s

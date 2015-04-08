@@ -19,9 +19,21 @@ class User < Sequel::Model
     end
   end
 
-  #def to_json
-  #  { id: self.id, name: self.name, username: self.username, admin: self.admin, password: "1234" }.to_json
-  #end
+  def after_update
+    super
+    db.after_commit do
+      Slave.all.each do |slave|
+        Ost["update_users_" + slave.id.to_s] << self.to_json
+      end
+    end
+  end
+
+  def before_destroy
+    super
+    Slave.all.each do |slave|
+      Ost["destroy_users_" + slave.id.to_s] << self.id
+    end
+  end
 
   def self.fetch(username)
     first(username: username)
