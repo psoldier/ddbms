@@ -15,6 +15,8 @@ class Slave < Sequel::Model
       hash = YAML.load_file(Dir.pwd + '/config/database.yml')[environment]
 
       system("echo 'create database #{self.database}' | ssh slave@#{self.host} mysql -u #{self.username} -p#{self.password}")
+      system("echo 'GRANT ALL ON #{self.database}.* TO #{self.username}@'#{self.host}' IDENTIFIED BY '#{self.password}'' | ssh slave@#{self.host} mysql -u #{self.username} -p#{self.password}")
+
       system("mysqldump #{hash['database']} | ssh slave@#{self.host} mysql #{self.database}")
 
     end
