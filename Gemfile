@@ -13,6 +13,7 @@ gem 'rack-flash3', :require => 'rack-flash'
 
 gem 'ohm'
 gem 'ost'
+gem 'net-ssh-gateway'
 
 #gem 'json'
 

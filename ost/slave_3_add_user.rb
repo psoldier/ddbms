@@ -4,6 +4,8 @@ require 'mysql2'
 require 'yaml'
 
 Sequel.connect("mysql2://root:root@localhost/slave_3")
+Ost.redis = Redic.new("redis://127.0.0.1:6379")
+
 Dir[Dir.pwd + '/config/initializers/*.rb'].sort.each { |req| require_relative req }
 
 class User < Sequel::Model
