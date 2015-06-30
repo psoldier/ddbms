@@ -1,6 +1,10 @@
 require 'ost'
 require 'sequel'
+require 'yaml'
 
+#environment = ENV['RACK_ENV'] || 'development'
+#hash = YAML.load_file(root + '/config/database.yml')[environment]
+#db = Sequel.connect("mysql2://#{hash['username']}:#{hash['password']}@#{hash['host']}/#{hash['database']}")
 Sequel.connect(:adapter=>'mysql2', :host=>'192.168.56.102', :database=>'slave', :user=>'root', :password=>'root', :port=>'3306')
 Ost.redis = Redic.new("redis://127.0.0.1:6379")
 
