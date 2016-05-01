@@ -20,6 +20,7 @@
             %th Creación
             %th Adapter
             %th Host
+            %th HostName
             %th Database
             %th Username
             %th
@@ -35,6 +36,8 @@
               %td
                 = slave.host
               %td
+                = slave.host_name
+              %td
                 = slave.database
               %td
                 = slave.username
@@ -42,8 +45,6 @@
                 .pull-right
                   %a.btn.btn-info.btn-sm{:href=>"/admin/slaves/#{slave.id}"}
                     Ver
-                  %a.btn.btn-success.btn-sm{:href=>"/admin/slaves/#{slave.id}/edit"}
-                    Editar
                   - if current_user.admin
                     %form.btn-delete{method:"post", action:"/admin/slaves/#{slave.id}", onsubmit:"return confirm('Está seguro que quiere eliminar?');"}
                       %input{ type:"hidden", name:"_method", value:"delete" }

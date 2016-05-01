@@ -4,7 +4,7 @@ class Slave < Sequel::Model
 
   def validate
     super
-    validates_presence [:adapter, :host, :username, :password, :database]
+    validates_presence [:adapter, :host, :host_name, :host_password, :username, :password, :database, :master_host]
     validates_unique :database
   end
 
@@ -13,13 +13,9 @@ class Slave < Sequel::Model
     db.after_commit do
       environment = ENV['RACK_ENV'] || 'development'
       hash = YAML.load_file(Dir.pwd + '/config/database.yml')[environment]
-
-      system("echo 'create database #{self.database}' | ssh slave@#{self.host} mysql -u #{self.username} -p#{self.password}")
-      system("echo 'GRANT ALL ON #{self.database}.* TO #{self.username}@'#{self.host}' IDENTIFIED BY '#{self.password}'' | ssh slave@#{self.host} mysql -u #{self.username} -p#{self.password}")
-
-      system("mysqldump #{hash['database']} | ssh slave@#{self.host} mysql #{self.database}")
-
+      system("./create_slave.sh #{database} #{host_name} #{host} #{username} #{username} #{hash['database']} #{master_host}")
     end
+    Ost["add_slaves"] << self.id
   end
 
 end

@@ -30,20 +30,24 @@
             %label.control-label
               = @slave.host
         .form-group
+          %label.col-md-3.col-lg-3.control-label HostName:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.host_name
+        .form-group
           %label.col-md-3.col-lg-3.control-label Username:
           .col-md-9.col-lg-9
             %label.control-label
               = @slave.username
         .form-group
+          %label.col-md-3.col-lg-3.control-label Master Host:
+          .col-md-9.col-lg-9
+            %label.control-label
+              = @slave.master_host
+        .form-group
           %label.col-md-3.col-lg-3.control-label Creación:
           .col-md-9.col-lg-9
             %label.control-label
               = @slave.created_at.strftime("%d/%m/%Y")
-        .form-group
-          %label.col-md-3.col-lg-3.control-label Actualización:
-          .col-md-9.col-lg-9
-            %label.control-label
-              = @slave.updated_at.nil? ? "-" : @slave.updated_at.strftime("%d/%m/%Y")
         .pull-right
           %a.btn.btn-primary{ href:"/admin/slaves" } Volver
-          %a.btn.btn-success{ href:"/admin/slaves/#{@slave.id}/edit" } Editar

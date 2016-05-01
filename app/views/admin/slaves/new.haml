@@ -14,7 +14,38 @@
     %hr
     .col-md-6.col-lg-6.col-md-offset-1.col-lg-offset-1
       %form.form-horizontal{ method:'post', action:'/admin/slaves/create' }
-        = partial :'slaves/form'
+        .form-group
+          %label.col-sm-2.control-label{ for:'adapter' } Adapter*
+          .col-sm-10
+            %input.form-control#adapter{ type:'text', name:'slave[adapter]', value:"#{@slave.adapter}", autofocus:"", required: true }
+        .form-group
+          %label.col-sm-2.control-label{ for:'host' } Host*
+          .col-sm-10
+            %input.form-control#host{ type:'text', name:'slave[host]', value:"#{@slave.host}", required: true }
+        .form-group
+          %label.col-sm-2.control-label{ for:'host_name' } HostName*
+          .col-sm-10
+            %input.form-control#host_name{ type:'text', name:'slave[host_name]', value:"#{@slave.host_name}", required: true }
+        .form-group
+          %label.col-sm-2.control-label{ for:'host_password' } HostPassword*
+          .col-sm-10
+            %input.form-control#host_password{ type:'text', name:'slave[host_password]', value:"#{@slave.host_password}", required: true }
+        .form-group
+          %label.col-sm-2.control-label{ for:'database' } Database*
+          .col-sm-10
+            %input.form-control#database{ type:'text', name:'slave[database]', value:"#{@slave.database}", required: true }
+        .form-group
+          %label.col-sm-2.control-label{ for:'username' } Username*
+          .col-sm-10
+            %input.form-control#username{ type:'text', name:'slave[username]', value:"#{@slave.username}", required: true }
+        .form-group
+          %label.col-sm-2.control-label{ for:'password' } Password*
+          .col-sm-10
+            %input.form-control#password{ type:'text', name:'slave[password]', value:"#{@slave.password}", required: true }
+        .form-group
+          %label.col-sm-2.control-label{ for:'master_host' } Master Host*
+          .col-sm-10
+            %input.form-control#master_host{ type:'text', name:'slave[master_host]', value:"#{@slave.master_host}", required: true }
         .pull-right
           %a.btn.btn-primary{ href:'/admin/slaves' } Volver
           %button.btn.btn-success{ type:'submit' } Crear

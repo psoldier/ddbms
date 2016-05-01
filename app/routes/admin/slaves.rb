@@ -18,11 +18,6 @@ module DBMS
       haml :'slaves/show'
     end
 
-    get '/slaves/:id/edit' do
-      @slave = Slave[params[:id]]
-      haml :'slaves/edit'
-    end
-
     post '/slaves/create' do
       begin
         @slave = Slave.new params[:slave]
@@ -32,19 +27,6 @@ module DBMS
       rescue Exception => e
         flash.now[:error] = e.to_s
         haml :'/slaves/new'
-      end
-    end
-
-    put '/slaves/:id' do
-      begin
-        @slave = Slave[params[:id]]
-        @slave.update params[:slave]
-        @slave.save
-        flash[:notice] = 'Slave actualizado con exito'
-        redirect :"/admin/slaves/#{params[:id]}"
-      rescue Exception => e
-        flash.now[:error] = e.to_s
-        haml :'slaves/edit'
       end
     end
 

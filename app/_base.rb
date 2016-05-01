@@ -36,8 +36,8 @@ module DBMS
     # sequel
     environment = ENV['RACK_ENV'] || 'development'
     hash = YAML.load_file(root + '/config/database.yml')[environment]
-    DB = Sequel.connect("mysql2://#{hash['username']}:#{hash['password']}@#{hash['host']}/#{hash['database']}")
-    DB.extension(:pagination)
+    DB = Sequel.connect("mysql2://#{hash['username']}:#{hash['password']}@#{hash['host']}/#{hash['database']}", servers:{})
+    DB.extension :pagination
 
     configure :development do
       register Sinatra::Reloader

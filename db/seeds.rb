@@ -1,4 +1,4 @@
-User.create username: "pablo@pablo.com", password: "pablo", name: "Psoldier"
+User.create username: "pablo@pablo.com", password: "pablo", name: "Psoldier", admin: true
 User.create username: "mariel@mariel.com", password: "mariel", name: "Mama"
 User.create username: "mario@mario.com", password: "mario", name: "Msoldier"
 User.create username: "juan@juan.com", password: "juan", name: "Jsoldier"
@@ -14,7 +14,3 @@ User.create username: "miga@miga.com", password: "miga", name: "Mimovi"
 User.create username: "cecil@cecil.com", password: "cecil", name: "Cpibo"
 User.create username: "valen@valen.com", password: "valen", name: "Vort"
 User.create username: "oscar@oscar.com", password: "oscar", name: "Oort"
-
-#Slave.create adapter: "mysql", host: "localhost", username:"root", password:"root", database:"slave_1"
-#Slave.create adapter: "mysql", host: "localhost", username:"root", password:"root", database:"slave_2"
-#Slave.create adapter: "mysql", host: "localhost", username:"root", password:"root", database:"slave_3"

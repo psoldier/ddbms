@@ -12,27 +12,17 @@ class User < Sequel::Model
 
   def after_create
     super
-    db.after_commit do
-      Slave.all.each do |slave|
-        Ost["add_users_" + slave.id.to_s] << self.to_json
-      end
-    end
+    Ost["add_users"] << self.id
   end
 
   def after_update
     super
-    db.after_commit do
-      Slave.all.each do |slave|
-        Ost["update_users_" + slave.id.to_s] << self.to_json
-      end
-    end
+    Ost["update_users"] << self.id
   end
 
   def before_destroy
     super
-    Slave.all.each do |slave|
-      Ost["destroy_users_" + slave.id.to_s] << self.id
-    end
+    Ost["destroy_users"] << self.id
   end
 
   def self.fetch(username)
